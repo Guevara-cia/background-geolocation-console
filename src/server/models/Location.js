@@ -1,5 +1,5 @@
 var LocationModel = require('../database/LocationModel');
-
+/*Ruben Huamani*/
 /**
 * Location model
 */
