@@ -13,6 +13,7 @@ import {
   Navigation,
   Panel
 } from 'react-toolbox';
+import Viewport from "./Viewport";
 
 const API_KEY = process.env.GMAP_API_KEY || "AIzaSyA9j72oZA5SmsA8ugu57pqXwpxh9Sn4xuM";
 
@@ -23,15 +24,20 @@ class MapView extends Component {
     
     this.state = {
       currentPosition: undefined,
-      center: { lat: -25.363882, lng: 131.044922 },
+      center: { lat: -12.056112, lng: -77.036990 },
       zoom: 18
     };
+
     this.motionChangePolylines = [];
     this.selectedMarker = null;
     this.geofenceMarkers = {};
     this.geofenceHitMarkers = [];
     this.markers = [];
-    this.gmap = undefined;
+    this.map = undefined;
+
+    /* Ruben Huamani */
+    this.marcadores = [];
+    /* Ruben Huamani */
 
     let app = App.getInstance();  
 
@@ -43,9 +49,106 @@ class MapView extends Component {
     
   }
 
-  onMapLoaded(event) {
-    this.gmap = event.map;
+  initial(){
+    alert("Carmella Bing");
+  }
 
+  onMapLoaded(event) {
+    this.map = event.map;
+
+
+    var marcador = new google.maps.Marker({
+        zIndex: 10,
+        map: this.gmap,
+        title: 'Ubicación actual',
+        position : new google.maps.LatLng(-12.056112, -77.036990),
+        icon: {
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 12,
+            fillColor: COLORS.blue,
+            fillOpacity: 1,
+            strokeColor: COLORS.white,
+            strokeOpacity: 1,
+            strokeWeight: 6
+        }
+    });
+
+    var http = require('http');
+    //var verificadores = null;
+    var data = '';
+    var urlImages = 'http://dev.guevara-cia.com/images/verificador/'
+
+    var optionsget = {
+        host: 'guevaraservicelb.iaas-guevara-cia.com',
+        port: 80,
+        path: '/api/v2/verificadorONP/_table/verificador?api_key=8e08ccf4662257e1ee63116278a8333fb2dd494cc57b6021f95a8a397fcecfa4',
+        method: 'GET'
+    };
+    var reqGet = http.request(optionsget, function (res) {
+        res.on('data', function (d) {
+            data += d;
+        })
+        .on('end', function () {
+            var json = JSON.parse(data);
+            var verificadores = json.resource;
+            for(var i = 0; i < verificadores.length; i++){
+                var verificador = verificadores[i];
+                var image = '../images/indicador_mapa.png';
+                var marcador = new google.maps.Marker({
+                    zIndex: 10,
+                    map: event.map,
+                    title: verificador.user_name,
+                    position : new google.maps.LatLng(verificador.latitud, verificador.longitud),
+                    icon: image
+                });
+                //this.marcadores.push(marcador);
+
+                var contentString = '<div id="content">'+
+                    '<div id="siteNotice">'+
+                    '<h3 id="firstHeading" >'+verificador.user_name+'</h3>'+
+                    '</div>'+
+                    '<table>'+
+                    '<tr>'+
+                    '<td>'+
+                    '<img src= '+ urlImages + verificador.foto + ' height="100" width="80"></img>'+
+                    '<p><b>Puesto:</b> ' + verificador.puesto + '</p>' +
+                    '<p><b>Equipo de Trabajo:</b> ' + verificador.equipo_trabajo + '</p>'+
+                    '<p><b>Email:</b> '+verificador.correo +'</p>'+
+                    '<p><b>Teléfono:</b> ' + verificador.user_phone + '</p>'+
+                    '</td>'+
+                    '</tr>'+
+                    '</table>'+
+                    '</div>';
+
+                var infowindow = new google.maps.InfoWindow({
+                });
+
+                /*google.maps.event.addListener(marcador, 'click', function(){
+
+                });*/
+
+                //google.maps.event.addListener(marcador,'rightclick', (function(marcador ,contentString, infowindow){
+                google.maps.event.addListener(marcador,'click', (function(marcador ,contentString, infowindow){
+                    return function() {
+                        infowindow.setContent(contentString);
+                        infowindow.open(event.mapp, marcador);
+                        google.maps.event.addListener(event.map,'click', function(){
+                            infowindow.close();
+                        });
+                    };
+                })(marcador, contentString, infowindow));
+            }
+
+        })
+        on('error', function (e) {
+            console.error(e);
+        })
+        .on('uncaughtException', function (err) {
+            console.error(err);
+        });
+    });
+
+      reqGet.end();
     // Route polyline
     let seq = {
       repeat: '50px',
@@ -60,7 +163,7 @@ class MapView extends Component {
     };
 
     this.polyline = new google.maps.Polyline({
-      map: this.gmap,
+      map: this.map,
       zIndex: 1,
       geodesic: true,
       strokeColor: COLORS.polyline_color,
@@ -72,7 +175,7 @@ class MapView extends Component {
     // Blue current location marker
     this.currentLocationMarker = new google.maps.Marker({
       zIndex: 10,
-      map: this.gmap,
+      map: this.map,
       title: 'Ubicación actual',
       icon: {
         path: google.maps.SymbolPath.CIRCLE,
@@ -86,7 +189,7 @@ class MapView extends Component {
     });
     // Light blue location accuracy circle
     this.locationAccuracyCircle = new google.maps.Circle({
-      map: this.gmap,
+      map: this.map,
       zIndex: 9,
       fillColor: COLORS.light_blue,
       fillOpacity: 0.4,
@@ -145,13 +248,17 @@ class MapView extends Component {
   }
 
   onFilter(filter) {
-    let map = (filter.value) ? this.gmap : null;
-
+    let map = (filter.value) ? this.map : null;
     switch(filter.name) {
       case 'showMarkers':        
         this.markers.forEach((marker) => {
           marker.setMap(map);
         });
+
+        this.marcadores.forEach((marker) =>{
+            marker.setMap(map);
+        })
+
         break;
       case 'showPolyline':
         this.polyline.setMap(map);
@@ -178,7 +285,7 @@ class MapView extends Component {
 
     let settings = app.getState();
 
-    this.polyline.setMap((settings.showPolyline) ? this.gmap : null);
+    this.polyline.setMap((settings.showPolyline) ? this.map : null);
 
     let motionChangePosition = null;
     let searchingForMotionChange = false;
@@ -189,11 +296,11 @@ class MapView extends Component {
       let latLng = new google.maps.LatLng(location.latitude, location.longitude);
       if (location.geofence) {
         this.buildGeofenceMarker(location, {
-          map: (settings.showGeofenceHits) ? this.gmap : null
+          map: (settings.showGeofenceHits) ? this.map : null
         });
       } else {
         let marker = this.buildLocationMarker(location, {
-          map: (settings.showMarkers) ? this.gmap : null
+          map: (settings.showMarkers) ? this.map : null
         });
         this.markers.push(marker);
       }    
@@ -211,7 +318,7 @@ class MapView extends Component {
     };
     let currentPosition = this.props.locations[0];
     let latLng = new google.maps.LatLng(currentPosition.latitude, currentPosition.longitude);
-    this.gmap.setCenter(latLng);
+    this.map.setCenter(latLng);
     this.currentLocationMarker.setPosition(latLng);
     this.locationAccuracyCircle.setCenter(latLng);
     this.locationAccuracyCircle.setRadius(currentPosition.accuracy);
@@ -232,7 +339,7 @@ class MapView extends Component {
       }
     };
     return new google.maps.Polyline({
-      map: (settings.showPolyline) ? this.gmap : null,
+      map: (settings.showPolyline) ? this.map : null,
       zIndex: 1001,
       geodesic: true,
       strokeColor: COLORS.green,
@@ -323,7 +430,7 @@ class MapView extends Component {
   }
 
   // Build a bread-crumb location marker.
-  buildLocationMarker(location, options?) {
+  buildLocationMarker(location, options?){
     options = options || {};
     let zIndex = options.zIndex || 1;
     let latLng = new google.maps.LatLng(location.latitude, location.longitude);
@@ -395,8 +502,8 @@ class MapView extends Component {
     }
   }
 
-  clearMarkers() {
-    this.markers.forEach((marker) => {
+  clearMarkers(){
+    /*this.markers.forEach((marker) => {
       google.maps.event.clearInstanceListeners(marker);
       marker.setMap(null);
     });
@@ -412,27 +519,18 @@ class MapView extends Component {
     this.motionChangePolylines.forEach((polyline) => {
       polyline.setMap(null);
     });
-    this.motionChangePolylines = [];
+    this.motionChangePolylines = [];*/
   }
 
-  render() {
-    if (this.gmap) {
+  render(){
+
+    if (this.map) {
       this.renderMarkers();
     }
 
-    return (
+    return(
         <div className={Styles.map}>
-          <GoogleMap
-            ref="map"
-            bootstrapURLKeys={{
-              key:API_KEY,
-              libraries:"geometry"
-            }}
-            // apiKey={null}
-            className="map"
-            center={this.state.center}
-            zoom={15}
-            onGoogleApiLoaded={this.onMapLoaded.bind(this)}>
+          <GoogleMap ref="map" bootstrapURLKeys={{key:API_KEY, libraries:"geometry"}} className="map" center={this.state.center} zoom={15} onGoogleApiLoaded={this.onMapLoaded.bind(this)}>
           </GoogleMap>
         </div>
     );

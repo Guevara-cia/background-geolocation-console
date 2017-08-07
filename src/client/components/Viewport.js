@@ -3,7 +3,8 @@ import React, {
   Component,
   View,
   Text
-} from 'react';
+}
+from 'react';
 
 import GoogleMap from 'google-map-react';
 
@@ -43,6 +44,7 @@ export default class Viewport extends Component {
     };
 
     App.getInstance().on('selectlocation', this.onSelectLocation.bind(this));
+
   }
 
   onSelectLocation(location) {
@@ -70,9 +72,6 @@ export default class Viewport extends Component {
           <Panel className={Styles.workspace} bodyScroll={false} scrollY={false}>
             <HeaderView />
             <Tabs index={this.state.activeTab} hideMode="display" onChange={this.handleTabChange.bind(this)}>
-              <Tab label="Verificadores">
-                <MapView2 />  
-              </Tab>
               <Tab label="Mapa" className={Styles.cabeceraTabla}>
                 <MapView />
               </Tab>
@@ -84,4 +83,5 @@ export default class Viewport extends Component {
         </Layout>
     );
   }
+
 }
