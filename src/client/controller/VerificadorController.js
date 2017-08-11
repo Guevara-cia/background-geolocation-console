@@ -28,7 +28,6 @@ onpApp.controller('VerificadorController' , function($scope, $timeout, $http){
         //var httpUrl = "http://localhost:9000/devices.json";
         $http.get(httpUrl)
             .success(function(data){
-                console.log("Lisa Ann");
                 $scope.dispositivos = data;
             })
             .error(function(data){
@@ -41,7 +40,12 @@ onpApp.controller('VerificadorController' , function($scope, $timeout, $http){
         //var httpUrl = "http://localhost:9000/location.json";
         $http.get(httpUrl)
             .success(function(data){
-                console.log("Puntos : "+data.length);
+                $scope.locations = [];
+                for(var i = 0; i < data.length; i++){
+                    var location = data[i];
+                    $scope.locations.push(new google.maps.LatLng(location.latitude, location.longitude));
+                }
+                var ruta = crearRuta($scope.map, "#880000", $scope.locations, 2, false);
             })
             .error(function(data){
                 console.log("Error : "+data);

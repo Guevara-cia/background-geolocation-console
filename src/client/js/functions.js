@@ -19,3 +19,16 @@ function crearMarcador(map, numLatitud, numLongitud, nomMarcador, urlIcono){
     });
     return marcador;
 }
+
+function crearRuta(map, colorLinea, arrayPosiciones, numBorder, inEditable){
+    var polilinea = new google.maps.Polyline({
+        path: arrayPosiciones,
+        map: map,
+        strokeColor: colorLinea,
+        strokeOpacity: 1.0,
+        strokeWeight: numBorder,//4
+        editable : inEditable
+    });
+
+    return polilinea;
+}

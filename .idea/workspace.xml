@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="08598802-6c09-4e79-86bf-a533bd86e734" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/controller/VerificadorController.js" afterPath="$PROJECT_DIR$/src/client/controller/VerificadorController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/js/functions.js" afterPath="$PROJECT_DIR$/src/client/js/functions.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -41,8 +42,28 @@
       <file leaf-file-name="VerificadorController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/client/controller/VerificadorController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="731">
-              <caret line="43" column="38" lean-forward="false" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="38" />
+            <state relative-caret-position="589">
+              <caret line="42" column="38" lean-forward="false" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="location.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/client/location.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="functions.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/client/js/functions.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="26" column="1" lean-forward="true" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -96,7 +117,6 @@
         <option value="$PROJECT_DIR$/src/client/components/MapView2.js" />
         <option value="$PROJECT_DIR$/src/client/components/Viewport.js" />
         <option value="$PROJECT_DIR$/src/client/components/MapView.js" />
-        <option value="$PROJECT_DIR$/src/client/js/functions.js" />
         <option value="$PROJECT_DIR$/src/client/mapa.html" />
         <option value="$PROJECT_DIR$/src/client/data.html" />
         <option value="$PROJECT_DIR$/src/client/controller/DataController.js" />
@@ -104,6 +124,7 @@
         <option value="$PROJECT_DIR$/src/client/index2.html" />
         <option value="$PROJECT_DIR$/src/client/css/styles.css" />
         <option value="$PROJECT_DIR$/src/client/verificador.html" />
+        <option value="$PROJECT_DIR$/src/client/js/functions.js" />
         <option value="$PROJECT_DIR$/src/client/controller/VerificadorController.js" />
       </list>
     </option>
@@ -263,12 +284,12 @@
       <workItem from="1501945180768" duration="9827000" />
       <workItem from="1502245953076" duration="4261000" />
       <workItem from="1502340741165" duration="2881000" />
-      <workItem from="1502420744535" duration="17129000" />
+      <workItem from="1502420744535" duration="18126000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42479000" />
+    <option name="totallyTimeSpent" value="43476000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -719,14 +740,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/js/functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="9" lean-forward="false" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/controller/DataController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -775,10 +788,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/js/functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="1" lean-forward="true" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/location.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/controller/VerificadorController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="43" column="38" lean-forward="false" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="38" />
+        <state relative-caret-position="589">
+          <caret line="42" column="38" lean-forward="false" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
           <folding />
         </state>
       </provider>
