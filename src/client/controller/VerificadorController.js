@@ -24,7 +24,7 @@ onpApp.controller('VerificadorController' , function($scope, $timeout, $http){
     }
 
     function listarDispositivos(){
-        var httpUrl = "http://40.71.248.211:9000/devices";
+        var httpUrl = "http://40.71.248.211:9000/devices?";
         //var httpUrl = "http://localhost:9000/devices.json";
         $http.get(httpUrl)
             .success(function(data){
@@ -37,11 +37,11 @@ onpApp.controller('VerificadorController' , function($scope, $timeout, $http){
     }
 
     function obtenerLocalizaciones(device_id){
-        //var httpUrl = "http://40.71.248.211:9000/devices";
-        var httpUrl = "http://localhost:9000/location.json";
+        var httpUrl = "http://40.71.248.211:9000/locations?device_id="+device_id;
+        //var httpUrl = "http://localhost:9000/location.json";
         $http.get(httpUrl)
             .success(function(data){
-
+                console.log("Puntos : "+data.length);
             })
             .error(function(data){
                 console.log("Error : "+data);
