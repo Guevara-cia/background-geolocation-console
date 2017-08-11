@@ -53,7 +53,7 @@ onpApp.controller('VerificadorController' , function($scope, $timeout, $http){
         $http.get(httpUrl)
             .success(function(data){
                 $scope.locations = [];
-                ruta.setMap(null);
+                //ruta.setMap(null);
                 console.log(data.length);
                 for(var i = 0; i < data.length; i++){
                     var location = data[i];
