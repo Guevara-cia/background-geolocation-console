@@ -5,6 +5,8 @@ onpApp.controller('DataController' , function($scope, $http, DTOptionsBuilder){
 
     $scope.locations = [];
 
+    var idTema     = obtenerGet("idTema");
+
     $scope.dtOptions = DTOptionsBuilder.newOptions()
         .withOption('bFilter', false)
         .withOption('bLengthChange', false)
@@ -18,7 +20,7 @@ onpApp.controller('DataController' , function($scope, $http, DTOptionsBuilder){
     obtenerLocalizaciones();
 
     function obtenerLocalizaciones(){
-        var httpUrl = "http://localhost:9000/location.json";
+        var httpUrl = "http://40.71.248.211:9000/locations?device_id=verificador2-c71c2095c80eccdc";
         $http.get(httpUrl)
             .success(function(data){
                 $scope.locations = data;
