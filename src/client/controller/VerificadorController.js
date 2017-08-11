@@ -41,11 +41,13 @@ onpApp.controller('VerificadorController' , function($scope, $timeout, $http){
         $http.get(httpUrl)
             .success(function(data){
                 $scope.locations = [];
+                console.log(data.length);
                 for(var i = 0; i < data.length; i++){
                     var location = data[i];
                     $scope.locations.push(new google.maps.LatLng(location.latitude, location.longitude));
                 }
                 var ruta = crearRuta($scope.map, "#880000", $scope.locations, 2, false);
+                ruta.setMap($scope.map);
             })
             .error(function(data){
                 console.log("Error : "+data);

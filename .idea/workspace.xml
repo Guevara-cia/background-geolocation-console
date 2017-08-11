@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="08598802-6c09-4e79-86bf-a533bd86e734" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/controller/VerificadorController.js" afterPath="$PROJECT_DIR$/src/client/controller/VerificadorController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/js/functions.js" afterPath="$PROJECT_DIR$/src/client/js/functions.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -42,8 +41,8 @@
       <file leaf-file-name="VerificadorController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/client/controller/VerificadorController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="589">
-              <caret line="42" column="38" lean-forward="false" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
+            <state relative-caret-position="708">
+              <caret line="49" column="38" lean-forward="false" selection-start-line="49" selection-start-column="38" selection-end-line="49" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -284,12 +283,12 @@
       <workItem from="1501945180768" duration="9827000" />
       <workItem from="1502245953076" duration="4261000" />
       <workItem from="1502340741165" duration="2881000" />
-      <workItem from="1502420744535" duration="18126000" />
+      <workItem from="1502420744535" duration="18268000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43476000" />
+    <option name="totallyTimeSpent" value="43618000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -806,8 +805,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/client/controller/VerificadorController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="42" column="38" lean-forward="false" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
+        <state relative-caret-position="708">
+          <caret line="49" column="38" lean-forward="false" selection-start-line="49" selection-start-column="38" selection-end-line="49" selection-end-column="38" />
           <folding />
         </state>
       </provider>
