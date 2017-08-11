@@ -16,7 +16,7 @@ import {
 
 const API_KEY = process.env.GMAP_API_KEY || "AIzaSyA9j72oZA5SmsA8ugu57pqXwpxh9Sn4xuM";
 
-class MapView extends Component {  
+class MapView2 extends Component {
 
   constructor(props) {
     super(props);
@@ -445,5 +445,5 @@ const mapStateToProps = function(store) {
   };
 };
 
-export default connect(mapStateToProps)(MapView);
+export default connect(mapStateToProps)(MapView2);
 

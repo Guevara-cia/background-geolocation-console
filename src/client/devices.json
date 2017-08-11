@@ -1,0 +1,42 @@
+[
+    {
+        "device_id": "verificador2-316af0f1acf9aa59",
+        "device_model": "SM-E700M (verificador2)"
+    },
+    {
+        "device_id": "verificador3-3ce78290f0d38039",
+        "device_model": "LG-H960 (verificador3)"
+    },
+    {
+        "device_id": "verificador4-3ce78290f0d38039",
+        "device_model": "LG-H960 (verificador4)"
+    },
+    {
+        "device_id": "verificador3-c71c2095c80eccdc",
+        "device_model": "SM-E700M (verificador3)"
+    },
+    {
+        "device_id": "verificador2-c71c2095c80eccdc",
+        "device_model": "SM-E700M (verificador2)"
+    },
+    {
+        "device_id": null,
+        "device_model": "UNKNOWN"
+    },
+    {
+        "device_id": "verificador-2f162a25f625b9ac",
+        "device_model": "SM-G900M (verificador)"
+    },
+    {
+        "device_id": "Verificador1-2f162a25f625b9ac",
+        "device_model": "SM-G900M (Verificador1)"
+    },
+    {
+        "device_id": "Cordova-2f162a25f625b9ac",
+        "device_model": "SM-G900M (Cordova)"
+    },
+    {
+        "device_id": "Cordova-c71c2095c80eccdc",
+        "device_model": "SM-E700M (Cordova)"
+    }
+]

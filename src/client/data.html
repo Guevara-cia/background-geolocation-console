@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="onpApp">
+    <head>
+        <meta charset="UTF-8">
+        <title>Mapa</title>
+        <link rel="stylesheet" type="text/css" href="css/styles.css" />
+        <link rel="stylesheet" type="text/css" href="3rdparty/jquery/plugins/dataTables/css/jquery.dataTables.min.css" />
+        <link rel="stylesheet" type="text/css" href="3rdparty/angular/modules/angular-datatables/css/angular-datatables.min.css" />
+        <link rel="stylesheet" type="text/css" href="3rdparty/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="3rdparty/bootstrap/plugins/datatables/css/datatables.bootstrap.min.css" />
+        <script type="text/javascript" src="3rdparty/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript" src="3rdparty/jquery/plugins/dataTables/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="3rdparty/angular/1.6.5/angular.min.js"></script>
+        <script type="text/javascript" src="3rdparty/angular/modules/angular-base64-upload/angular-base64-upload.min.js"></script>
+        <script type="text/javascript" src="3rdparty/angular/modules/angular-datatables/js/angular-datatables.min.js"></script>
+        <script type="text/javascript" src="3rdparty/bootstrap/plugins/datatables/js/angular-datatables.bootstrap.min.js"></script>
+        <script type="text/javascript" src="3rdparty/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="3rdparty/bootstrap/plugins/bootstrap-jquery-ui/js/jquery-ui-1.10.3.custom.min.js"></script>
+        <script type="text/javascript" src="js/functions.js"></script>
+        <script type="text/javascript" src="controller/DataController.js"></script>
+    </head>
+    <body ng-controller="DataController">
+        <table datatable="ng" dt-options="dtOptions" class="table" id="tblLocations">
+            <tr>
+                <tr>
+                    <td>UUID</td>
+                    <td>Registrado</td>
+                    <td>Coordenadas</td>
+                    <td>Precision</td>
+                    <td>Velocidad</td>
+                    <td>Odometro</td>
+                    <td>Evento</td>
+                    <td>En Movimiento</td>
+                    <td>Actividad</td>
+                    <td>Bateria</td>
+                </tr>
+            </thead>
+            <tbody ng-repeat="location in locations">
+                <tr>
+                    <td>{{location.uuid}}</td>
+                    <td>{{location.recorded_at}}</td>
+                    <td>{{location.coordinate}}</td>
+                    <td>{{location.accuracy}}</td>
+                    <td>{{location.speed}}</td>
+                    <td>{{location.odometer}}</td>
+                    <td>{{location.event}}</td>
+                    <td>{{location.is_moving}}</td>
+                    <td>{{location.activity}}</td>
+                    <td>{{location.battery_level*100}}%</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

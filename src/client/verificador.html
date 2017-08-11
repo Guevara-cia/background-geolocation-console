@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="onpApp">
+    <head>
+        <meta charset="UTF-8">
+        <title>Mapa</title>
+        <link rel="stylesheet" type="text/css" href="3rdparty/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/styles.css" />
+        <script type="text/javascript" src="3rdparty/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript" src="3rdparty/angular/1.6.5/angular.min.js"></script>
+        <script type="text/javascript" src="3rdparty/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyA9j72oZA5SmsA8ugu57pqXwpxh9Sn4xuM"></script>
+        <script type="text/javascript" src="js/functions.js"></script>
+        <script type="text/javascript" src="controller/VerificadorController.js"></script>
+    </head>
+    <body ng-controller="VerificadorController">
+        <div id="map" class="map">
+        </div>
+        <div id="filtro" class="filtro">
+            <div class="container mainFiltro">
+                <div class="row cabeceraFiltro">
+                    <div class="col-sm-12">Filtro</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12"><br /><strong>Ubicaciones</strong><br /></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <select name="cmbDevice" id="cmbDevice" title="Dispositivo" class="form-control"ng-model="device_id" ng-options="dispositivo.device_id as dispositivo.device_model for dispositivo in dispositivos">
+                            <option value="">------- Dispositivo -------</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12"><br /><br /><button class="botonFiltro" ng-click="refrescarMapa()">Refrescar</button></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12"><br /><strong>Mapa</strong><br /></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <input type="checkbox" value="" />Mostrar Marcadores<br />
+                        <input type="checkbox" value="" />Mostrar Lineas<br />
+                        <input type="checkbox" value="" />Mostrar Geocercas
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
