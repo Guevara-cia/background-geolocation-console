@@ -9,8 +9,29 @@
         <script type="text/javascript" src="3rdparty/angular/1.6.5/angular.min.js"></script>
         <script type="text/javascript" src="3rdparty/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyA9j72oZA5SmsA8ugu57pqXwpxh9Sn4xuM"></script>
+        <script type="text/javascript" src="3rdparty/bootstrap/plugins/bootstrap-jquery-ui/js/jquery-ui-1.10.3.custom.min.js"></script>
+        <script type="text/javascript" src="3rdparty/bootstrap/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+        <link rel="stylesheet" type="text/css" href="3rdparty/bootstrap/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.css" />
         <script type="text/javascript" src="js/functions.js"></script>
         <script type="text/javascript" src="controller/VerificadorController.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('#fecInicio').datepicker({format: 'yyyy-mm-dd',changeMonth: true,changeYear: true, showOn : "button", buttonImage: "../images/calendario.png", buttonImageOnly: true, minDate: 0}).on( "change", function() {$("#fecInicio").datepicker( "option", "minDate", getDate( this ) );});
+                $('#fecFin').datepicker({format: 'yyyy-mm-dd',changeMonth: true,changeYear: true, showOn : "button", buttonImage: "../images/calendario.png", buttonImageOnly: true, minDate: 0}).on( "change", function() {$("#fecFin").datepicker( "option", "minDate", getDate( this ) );});
+
+            })
+
+            function getDate(element) {
+                var date;
+                try {
+                    date = $.datepicker.parseDate("dd/mm/yyyy",element.value);
+                }
+                catch( error ) {
+                    date = null;
+                }
+                return date;
+            }
+        </script>
     </head>
     <body ng-controller="VerificadorController">
         <div id="map" class="map">
@@ -28,6 +49,18 @@
                         <select name="cmbDevice" id="cmbDevice" title="Dispositivo" class="form-control"ng-model="device_id" ng-options="dispositivo.device_id as dispositivo.device_model for dispositivo in dispositivos">
                             <option value="">------- Dispositivo -------</option>
                         </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <br />
+                        <input type="text" class="form-control" id="fecInicio" name="fecInicio" placeholder="Fecha Inicio" ng-model="fecInicio" readonly />
+                        <br />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control" id="fecFin" name="fecFin" placeholder="Fecha Fin" ng-model="fecFin" readonly />
                     </div>
                 </div>
                 <div class="row">

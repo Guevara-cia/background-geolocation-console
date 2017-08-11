@@ -18,9 +18,21 @@ onpApp.controller('VerificadorController' , function($scope, $timeout, $http){
 
 
     $scope.refrescarMapa = function(){
-        if($scope.device_id == undefined)
+        if($scope.device_id == undefined) {
             alert("Seleccione un dispositivo");
-        obtenerLocalizaciones($scope.device_id);
+            return;
+        }
+        if($scope.fecInicio == '') {
+            alert("Ingrese Fecha Inicio");
+            return;
+        }
+        if($scope.fecFin == '') {
+            alert("Ingrese Fecha Fin");
+            return;
+        }
+        var fecInicio = $scope.fecInicio+'T00:00:00.000Z';
+        var fecFin = $scope.fecFin+'T23:59:00.000Z';
+        obtenerLocalizaciones($scope.device_id, fecInicio, fecFin);
     }
 
     function listarDispositivos(){
@@ -35,18 +47,19 @@ onpApp.controller('VerificadorController' , function($scope, $timeout, $http){
             });
     }
 
-    function obtenerLocalizaciones(device_id){
-        var httpUrl = "http://40.71.248.211:9000/locations?device_id="+device_id;
+    function obtenerLocalizaciones(device_id, fec_inicio, fec_fin){
+        var httpUrl = "http://40.71.248.211:9000/locations?device_id="+device_id+"&start_date="+fec_inicio+"&end_date="+fecFin;
         //var httpUrl = "http://localhost:9000/location.json";
         $http.get(httpUrl)
             .success(function(data){
                 $scope.locations = [];
+                ruta.setMap(null);
                 console.log(data.length);
                 for(var i = 0; i < data.length; i++){
                     var location = data[i];
                     $scope.locations.push(new google.maps.LatLng(location.latitude, location.longitude));
                 }
-                var ruta = crearRuta($scope.map, "#880000", $scope.locations, 2, false);
+                var ruta = crearRuta($scope.map, "#880000", $scope.locations, 4, false);
                 ruta.setMap($scope.map);
             })
             .error(function(data){
