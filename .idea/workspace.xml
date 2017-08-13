@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08598802-6c09-4e79-86bf-a533bd86e734" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/controller/MapaController.js" afterPath="$PROJECT_DIR$/src/client/controller/MapaController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/controller/VerificadorController.js" afterPath="$PROJECT_DIR$/src/client/controller/VerificadorController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/css/styles.css" afterPath="$PROJECT_DIR$/src/client/css/styles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/mapa.html" afterPath="$PROJECT_DIR$/src/client/mapa.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/verificador.html" afterPath="$PROJECT_DIR$/src/client/verificador.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -21,11 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="VerificadorController.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="VerificadorController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/client/controller/VerificadorController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="38" column="57" lean-forward="true" selection-start-line="38" selection-start-column="57" selection-end-line="38" selection-end-column="86" />
+            <state relative-caret-position="493">
+              <caret line="38" column="120" lean-forward="false" selection-start-line="38" selection-start-column="120" selection-end-line="38" selection-end-column="120" />
               <folding />
             </state>
           </provider>
@@ -41,6 +36,18 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="index2.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/client/index2.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="30" lean-forward="false" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="30" />
+              <folding>
+                <element signature="e#1507#1513#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="verificador.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/verificador.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -51,7 +58,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MapaController.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MapaController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/controller/MapaController.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="283">
@@ -124,8 +131,8 @@
         <option value="$PROJECT_DIR$/src/client/verificador.html" />
         <option value="$PROJECT_DIR$/src/client/mapa.html" />
         <option value="$PROJECT_DIR$/src/client/css/styles.css" />
-        <option value="$PROJECT_DIR$/src/client/controller/VerificadorController.js" />
         <option value="$PROJECT_DIR$/src/client/controller/MapaController.js" />
+        <option value="$PROJECT_DIR$/src/client/controller/VerificadorController.js" />
       </list>
     </option>
   </component>
@@ -266,12 +273,12 @@
       <workItem from="1502340741165" duration="2881000" />
       <workItem from="1502420744535" duration="22664000" />
       <workItem from="1502570091922" duration="1296000" />
-      <workItem from="1502583675120" duration="4831000" />
+      <workItem from="1502583675120" duration="5102000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54141000" />
+    <option name="totallyTimeSpent" value="54412000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -597,16 +604,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/index2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="50" column="68" lean-forward="false" selection-start-line="50" selection-start-column="68" selection-end-line="50" selection-end-column="68" />
-          <folding>
-            <element signature="e#1507#1513#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/css/styles.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="436">
@@ -636,18 +633,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/index2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="30" lean-forward="false" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="30" />
+          <folding>
+            <element signature="e#1507#1513#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/verificador.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="42" lean-forward="false" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/controller/VerificadorController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="38" column="57" lean-forward="true" selection-start-line="38" selection-start-column="57" selection-end-line="38" selection-end-column="86" />
           <folding />
         </state>
       </provider>
@@ -660,6 +659,14 @@
             <element signature="e#763#1315#0" expanded="false" />
             <element signature="e#1350#1699#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/controller/VerificadorController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="38" column="120" lean-forward="false" selection-start-line="38" selection-start-column="120" selection-end-line="38" selection-end-column="120" />
+          <folding />
         </state>
       </provider>
     </entry>

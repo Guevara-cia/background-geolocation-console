@@ -36,7 +36,7 @@ onpApp.controller('VerificadorController' , function($scope, $timeout, $http){
                         '<p><b>Equipo de Trabajo:</b> ' + verificador.equipo_trabajo + '</p>'+
                         '<p><b>Email:</b> '+verificador.correo +'</p>'+
                         '<p><b>Teléfono:</b> ' + verificador.user_phone + '</p>'+
-                        '<p><a href="mapa.html?device_id=verificador2-c71c2095c80eccdc">Ver Ruta</a></p>'+
+                        '<p><a href="mapa.html?device_id=verificador2-c71c2095c80eccdc" onclick="window.parent.setearTab(2)">Ver Ruta</a></p>'+
                         '</td>'+
                         '</tr>'+
                         '</table>'+
