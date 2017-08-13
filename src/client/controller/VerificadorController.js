@@ -1,77 +1,65 @@
 
 var onpApp = angular.module('onpApp',[]);
 
-onpApp.controller('VerificadorController' , function($scope, $timeout, $filter, $http){
+onpApp.controller('VerificadorController' , function($scope, $timeout, $http){
 
     var mapZoom					= 16;
     var iniLatitud    			= -12.048271;
     var iniLongitud   			= -77.031272;
 
-    $scope.dispositivos = [];
-    $scope.locations = [];
-
-    var d = new Date();
-    var fecha = $filter('date')(d, 'yyyy-MM-dd');
-
-    $scope.fecInicio = fecha;
-    $scope.fecFin = fecha;
-
-    listarDispositivos();
+    $scope.verificadores = [];
 
     $scope.map = crearMapa(iniLatitud, iniLongitud, mapZoom);
 
-    var puntoActual = crearMarcador($scope.map, iniLatitud, iniLongitud, 'Ubicación actual','');
+    obtenerVerificadores();
 
-
-    $scope.refrescarMapa = function(){
-        if($scope.device_id == undefined) {
-            alert("Seleccione un dispositivo");
-            return;
-        }
-        if($scope.fecInicio == '') {
-            alert("Ingrese Fecha Inicio");
-            return;
-        }
-        if($scope.fecFin == '') {
-            alert("Ingrese Fecha Fin");
-            return;
-        }
-        var fecInicio = $scope.fecInicio+'T'+ $scope.horaInicio+':00.000Z';
-        var fecFin = $scope.fecFin+'T'+$scope.fecFin+':00.000Z';
-        obtenerLocalizaciones($scope.device_id, fecInicio, fecFin);
-    }
-
-    function listarDispositivos(){
-        var httpUrl = "http://40.71.248.211:9000/devices?";
-        //var httpUrl = "http://localhost:9000/devices.json";
+    function obtenerVerificadores(){
+        var image = '../images/indicador_mapa.png';
+        var urlImages = 'http://dev.guevara-cia.com/images/verificador/';
+        var httpUrl = "http://guevaraservicelb.iaas-guevara-cia.com/api/v2/verificadorONP/_table/verificador?api_key=8e08ccf4662257e1ee63116278a8333fb2dd494cc57b6021f95a8a397fcecfa4";
         $http.get(httpUrl)
             .success(function(data){
-                $scope.dispositivos = data;
-            })
-            .error(function(data){
-                console.log("Error : "+data);
-            });
-    }
+                var verificadores = data.resource;
+                for(var i = 0; i < verificadores.length; i++){
+                    var verificador = verificadores[i];
+                    var marcador = crearMarcador($scope.map, verificador.latitud, verificador.longitud, verificador.user_name, image);
 
-    function obtenerLocalizaciones(device_id, fec_inicio, fec_fin){
-        var httpUrl = "http://40.71.248.211:9000/locations?device_id="+device_id+"&start_date="+fec_inicio+"&end_date="+fecFin;
-        //var httpUrl = "http://localhost:9000/location.json";
-        $http.get(httpUrl)
-            .success(function(data){
-                $scope.locations = [];
-                //ruta.setMap(null);
-                console.log(data.length);
-                for(var i = 0; i < data.length; i++){
-                    var location = data[i];
-                    $scope.locations.push(new google.maps.LatLng(location.latitude, location.longitude));
+                    var contentString = '<div id="content">'+
+                        '<div id="siteNotice">'+
+                        '<h3 id="firstHeading" >'+verificador.user_name+'</h3>'+
+                        '</div>'+
+                        '<table>'+
+                        '<tr>'+
+                        '<td>'+
+                        '<img src= '+ urlImages + verificador.foto + ' height="100" width="80"></img>'+
+                        '<p><b>Puesto:</b> ' + verificador.puesto + '</p>' +
+                        '<p><b>Equipo de Trabajo:</b> ' + verificador.equipo_trabajo + '</p>'+
+                        '<p><b>Email:</b> '+verificador.correo +'</p>'+
+                        '<p><b>Teléfono:</b> ' + verificador.user_phone + '</p>'+
+                        '<p><a href="mapa.html?device_id=verificador2-c71c2095c80eccdc">Ver Ruta</a></p>'+
+                        '</td>'+
+                        '</tr>'+
+                        '</table>'+
+                        '</div>';
+
+                    var infowindow = new google.maps.InfoWindow({
+                    });
+
+                    google.maps.event.addListener(marcador,'click', (function(marcador ,contentString, infowindow){
+                        return function() {
+                            infowindow.setContent(contentString);
+                            infowindow.open($scope.map, marcador);
+                            google.maps.event.addListener($scope.map,'click', function(){
+                                infowindow.close();
+                            });
+                        };
+                    })(marcador, contentString, infowindow));
+                    $scope.verificadores.push(marcador);
                 }
-                var ruta = crearRuta($scope.map, "#880000", $scope.locations, 4, false);
-                ruta.setMap($scope.map);
             })
             .error(function(data){
                 console.log("Error : "+data);
             });
     }
-
 
 });
