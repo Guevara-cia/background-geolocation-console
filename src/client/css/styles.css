@@ -44,8 +44,8 @@ body {
 .filtro{
     position: absolute;
     background-color: #fff;
-    width:220px;
-    height:400px;
+    width:240px;
+    height:440px;
     top:20px;
     left:20px;
     z-index: 100;
@@ -67,5 +67,5 @@ body {
     color:#fff;
     border:0px;
     height: 25px;
-    width: 185px;
+    width: 205px;
 }

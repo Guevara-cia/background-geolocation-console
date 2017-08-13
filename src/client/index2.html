@@ -6,6 +6,27 @@
         <link rel="stylesheet" type="text/css" href="css/styles.css">
         <link rel="stylesheet" type="text/css" href="3rdparty/bootstrap/3.3.7/css/bootstrap.min.css" />
         <script type="text/javascript" src="3rdparty/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+
+            function setearTab(id){
+                if(id == 1) {
+                    document.getElementById('tabVerificador').className = "active";
+                    document.getElementById('tabMapa').className = "";
+                    document.getElementById('tabData').className = "";
+                }
+                else if(id == 2){
+                    document.getElementById('tabVerificador').className = "";
+                    document.getElementById('tabMapa').className = "active";
+                    document.getElementById('tabData').className = "";
+                }
+                else if(id == 3){
+                    document.getElementById('tabVerificador').className = "";
+                    document.getElementById('tabMapa').className = "";
+                    document.getElementById('tabData').className = "active";
+                }
+            }
+
+        </script>
     </head>
     <body>
         <div class=" main">
@@ -19,9 +40,17 @@
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                    <a href="verificador.html" target="frmContenedor">Verificadores</a>
-                    <a href="mapa.html" target="frmContenedor">Mapa</a>
-                    <a href="data.html" target="frmContenedor">Data</a>
+                    <ul class="nav nav-tabs">
+                        <li id="tabVerificador" class="active">
+                            <a href="verificador.html" onclick="setearTab(1)" target="frmContenedor" data-toggle="tab">Verificadores</a>
+                        </li>
+                        <li id="tabMapa">
+                            <a href="mapa.html" onclick="setearTab(2)" target="frmContenedor" data-toggle="tab">Mapa</a>
+                        </li>
+                        <li id="tabData">
+                            <a href="data.html" onclick="setearTab(3)" target="frmContenedor" data-toggle="tab">Data</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div class="row contenedor">
