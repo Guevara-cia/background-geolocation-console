@@ -5,7 +5,9 @@ onpApp.controller('DataController' , function($scope, $http, DTOptionsBuilder){
 
     $scope.locations = [];
 
-    var idTema     = obtenerGet("idTema");
+    var pdevice_id     = obtenerGet("device_id");
+    var pfec_inicio     = obtenerGet("fec_inicio");
+    var pfec_fin       = obtenerGet("fec_fin");
 
     $scope.dtOptions = DTOptionsBuilder.newOptions()
         .withOption('bFilter', false)
@@ -17,10 +19,17 @@ onpApp.controller('DataController' , function($scope, $http, DTOptionsBuilder){
             "url": "3rdparty/angular/modules/angular-datatables/Spanish.json"
         })
 
-    obtenerLocalizaciones();
+    if(pdevice_id == undefined || pdevice_id == '')
+        pdevice_id = "";
+    if(pfec_inicio == undefined || pfec_inicio == '' )
+        pfec_inicio = ""
+    if(pfec_fin == undefined || pfec_fin == '')
+        pfec_fin = "";
 
-    function obtenerLocalizaciones(){
-        var httpUrl = "http://40.71.248.211:9000/locations?device_id=verificador2-c71c2095c80eccdc";
+    obtenerLocalizaciones(pdevice_id, pfec_inicio, pfec_fin);
+
+    function obtenerLocalizaciones(device_id, fec_inicio, fec_fin){
+        var httpUrl = "http://40.71.248.211:9000/locations?device_id="+device_id+"&start_date="+fec_inicio+"&end_date="+fec_fin;
         $http.get(httpUrl)
             .success(function(data){
                 $scope.locations = data;

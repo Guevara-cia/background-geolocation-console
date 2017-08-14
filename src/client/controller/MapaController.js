@@ -6,6 +6,7 @@ onpApp.controller('MapaController' , function($scope, $timeout, $filter, $http){
     var mapZoom					= 16;
     var iniLatitud    			= -12.048271;
     var iniLongitud   			= -77.031272;
+    var ruta = null;
 
     $scope.dispositivos = [];
     $scope.locations = [];
@@ -61,13 +62,14 @@ onpApp.controller('MapaController' , function($scope, $timeout, $filter, $http){
         $http.get(httpUrl)
             .success(function(data){
                 $scope.locations = [];
-                //ruta.setMap(null);
+                if(ruta != null)
+                    ruta.setMap(null);
                 console.log(data.length);
                 for(var i = 0; i < data.length; i++){
                     var location = data[i];
                     $scope.locations.push(new google.maps.LatLng(location.latitude, location.longitude));
                 }
-                var ruta = crearRuta($scope.map, "#880000", $scope.locations, 4, false);
+                ruta = crearRuta($scope.map, "#880000", $scope.locations, 4, false);
                 ruta.setMap($scope.map);
             })
             .error(function(data){
