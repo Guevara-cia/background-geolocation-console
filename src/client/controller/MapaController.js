@@ -57,7 +57,7 @@ onpApp.controller('MapaController' , function($scope, $timeout, $filter, $http){
     }
 
     function obtenerLocalizaciones(device_id, fec_inicio, fec_fin){
-        var httpUrl = "http://40.71.248.211:9000/locations?device_id="+device_id+"&start_date="+fec_inicio+"&end_date="+fecFin;
+        var httpUrl = "http://40.71.248.211:9000/locations?device_id="+device_id+"&start_date="+fec_inicio+"&end_date="+fec_fin;
         //var httpUrl = "http://localhost:9000/location.json";
         $http.get(httpUrl)
             .success(function(data){
