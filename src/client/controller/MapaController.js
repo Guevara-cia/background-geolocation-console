@@ -39,8 +39,19 @@ onpApp.controller('MapaController' , function($scope, $timeout, $filter, $http){
             alert("Ingrese Fecha Fin");
             return;
         }
-        var fecInicio = $scope.fecInicio+'T'+ $scope.horaInicio+':00.000Z';
-        var fecFin = $scope.fecFin+'T'+$scope.horaFin+':00.000Z';
+        var horaInicio = "";
+        var horaFin = "";
+        if($scope.horaInicio.length == 4)
+            horaInicio = "0"+$scope.horaInicio;
+        else
+            horaInicio = $scope.horaInicio;
+        if($scope.horaFin.length == 4)
+            horaFin = "0"+$scope.horaFin;
+        else
+            horaFin = $scope.horaFin;
+
+        var fecInicio = $scope.fecInicio+'T'+ horaInicio+':00.000Z';
+        var fecFin = $scope.fecFin+'T'+horaFin+':00.000Z';
         window.parent.setDeviceId($scope.device_id);
         window.parent.setFecInicio(fecInicio);
         window.parent.setFecFin(fecFin);
