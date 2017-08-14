@@ -40,7 +40,7 @@ onpApp.controller('MapaController' , function($scope, $timeout, $filter, $http){
             return;
         }
         var fecInicio = $scope.fecInicio+'T'+ $scope.horaInicio+':00.000Z';
-        var fecFin = $scope.fecFin+'T'+$scope.fecFin+':00.000Z';
+        var fecFin = $scope.fecFin+'T'+$scope.horaFin+':00.000Z';
         obtenerLocalizaciones($scope.device_id, fecInicio, fecFin);
     }
 
