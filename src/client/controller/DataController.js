@@ -5,9 +5,9 @@ onpApp.controller('DataController' , function($scope, $http, DTOptionsBuilder){
 
     $scope.locations = [];
 
-    var pdevice_id     = obtenerGet("device_id");
-    var pfec_inicio     = obtenerGet("fec_inicio");
-    var pfec_fin       = obtenerGet("fec_fin");
+    var pdevice_id     = window.parent.getDeviceId();
+    var pfec_inicio    = window.parent.getFecInicio();
+    var pfec_fin       = window.parent.getFecFin();
 
     $scope.dtOptions = DTOptionsBuilder.newOptions()
         .withOption('bFilter', false)
